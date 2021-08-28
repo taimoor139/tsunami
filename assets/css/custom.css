@@ -3,6 +3,6 @@
 	height: 175px;
 	/*width: auto;*/
 }
-.navbar-brand{
-	overflow-x: hidden;
+.loaded{
+	overflow-y: hidden;
 }
