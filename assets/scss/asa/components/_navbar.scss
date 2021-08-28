@@ -1,0 +1,276 @@
+//
+// navbar.scss
+// Extended from Bootstrap
+//
+
+.site-navbar {
+  position: relative;
+
+  .site-navbar-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	background-color: $dark;
+  }
+
+  .navbar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .navbar-nav-container {
+    position: relative;
+  }
+
+  .navbar-nav-container-overlay {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	border-top-width: 3rem;
+	border-top-style: solid;
+	border-color: #fff;
+    z-index: -1;
+  }
+
+  .navbar-nav-container-overlay::before,
+  .navbar-nav-container-overlay::after {
+    content: '';
+    position: absolute;
+    top: -3rem;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: inherit;
+  }
+
+  .navbar-nav-container-overlay::before {
+    left: -3rem;
+    border-width: 0 3rem 3rem 0;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+
+  .navbar-nav-container-overlay::after {
+    right: -3rem;
+    border-width: 3rem 3rem 0 0;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .site-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+
+    .site-navbar-overlay {
+      display: none;
+    }
+
+    .navbar-header {
+      height: 5rem;
+    }
+
+    .navbar-nav {
+      display: flex;
+      align-items: center;
+      height: 3rem;
+    }
+
+    .navbar-nav-container-overlay {
+      display: block;
+    }
+  }
+}
+
+// Navigation
+
+.navbar-nav {
+
+  .nav-item + .nav-item {
+
+    @include media-breakpoint-down(md) {
+	  padding-top: .25rem;
+	  padding-bottom: .25rem;
+    }
+  }
+
+  .nav-link {
+    font-weight: $navbar-nav-link-font-weight;
+
+    @include hover-focus {
+      outline: none;
+    }
+  }
+
+  .active > .nav-link,
+  .nav-link.active {
+    position: relative;
+  }
+
+  .active > .nav-link::before,
+  .nav-link.active::before {
+    display: none;
+    content: '';
+    position: absolute;
+    width: .75rem;
+	margin-left: auto;
+	margin-right: auto;
+    bottom: $nav-link-padding-y;
+    left: $navbar-nav-link-padding-x;
+    right: $navbar-nav-link-padding-x;
+    border-bottom: 2px solid currentColor;
+  }
+
+  @include media-breakpoint-up(xl) {
+    .active > .nav-link::before,
+    .nav-link.active::before {
+      display: block;
+    }
+  }
+}
+
+
+// Toggler
+
+.navbar-toggler-alternative {
+  position: relative;
+  padding: 0;
+  background-color: transparent;
+  border: 0 solid transparent;
+  border-radius: 0;
+  transition: all 0.35s ease-out;
+
+  @include hover-focus() {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.navbar-toggler-alternative-icon {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-toggler-alternative-icon > span {
+  position: relative;
+  width: 26px;
+  margin: 0 auto;
+  background-color: $navbar-dark-color;
+  transition: background-color .35s .0s ease-out;
+}
+
+.navbar-toggler-alternative-icon > span,
+.navbar-toggler-alternative-icon > span:before,
+.navbar-toggler-alternative-icon > span:after {
+  display: block;
+  height: 2px;
+  background-clip: padding-box;
+}
+
+.navbar-toggler-alternative-icon > span:before,
+.navbar-toggler-alternative-icon > span:after {
+  position: absolute;
+  content: '';
+  width: 13px;
+  background-color: $navbar-dark-color;
+  transform-origin: 50% 50%;
+  transition: background-color .35s .0s ease-out, top .2s .4s ease-out, left .2s .2s ease-out, right .2s .2s ease-out, width .2s .2s ease-out, transform .2s ease-out;
+}
+
+.navbar-toggler-alternative-icon > span:before {
+  top: 8px;
+  left: 13px;
+}
+
+.navbar-toggler-alternative-icon > span:after {
+  top: -8px;
+  right: 13px;
+}
+
+.navbar-toggler-alternative[aria-expanded="true"] .navbar-toggler-alternative-icon > span {
+  background-color: transparent !important;
+  transition: background-color .35s 0s ease-out;
+}
+
+.navbar-toggler-alternative[aria-expanded="true"] .navbar-toggler-alternative-icon > span:before,
+.navbar-toggler-alternative[aria-expanded="true"] .navbar-toggler-alternative-icon > span:after {
+  top: 0;
+  width: 26px;
+  transition: top .2s ease-out, left .2s .2s ease-out, right .2s .2s ease-out, width .2s .2s ease-out, transform .2s .4s ease-out;
+}
+
+.navbar-toggler-alternative[aria-expanded="true"] .navbar-toggler-alternative-icon > span:before {
+  left: 0;
+  transform: rotate3d(0, 0, 1, 45deg);
+}
+
+.navbar-toggler-alternative[aria-expanded="true"] .navbar-toggler-alternative-icon > span:after {
+  right: 0;
+  transform: rotate3d(0, 0, 1, -45deg);
+}
+
+.navbar-light {
+
+  .navbar-toggler-alternative-icon > span {
+    background-color: $navbar-light-color;
+  }
+
+  .navbar-toggler-alternative-icon > span:before,
+  .navbar-toggler-alternative-icon > span:after {
+    background-color: $navbar-light-color;
+  }
+}
+
+.navbar-dark {
+
+  .navbar-toggler-alternative-icon > span {
+    background-color: $navbar-dark-color;
+  }
+
+  .navbar-toggler-alternative-icon > span:before,
+  .navbar-toggler-alternative-icon > span:after {
+    background-color: $navbar-dark-color;
+  }
+}
+
+.navbar-expand {
+  @each $breakpoint in map-keys($grid-breakpoints) {
+    $next: breakpoint-next($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($next, $grid-breakpoints);
+
+    &#{$infix} {
+      @include media-breakpoint-up($next) {
+
+        .navbar-toggler-alternative {
+          display: none;
+        }
+
+        .navbar-collapse-inner {
+          align-items: center;
+          display: flex;
+          flex-basis: auto;
+        }
+
+      }
+    }
+  }
+}

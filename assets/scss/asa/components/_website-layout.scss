@@ -1,0 +1,130 @@
+//
+// website-layout.scss
+// Theme component
+//
+
+.body-overflow-measure {
+  position: relative;
+  height: 200vh;
+}
+
+.website-slider {
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  z-index: 50;
+}
+
+.website-slider-inner {
+  position: relative;
+  overflow: hidden;
+  transition: height 800ms ease 0s;
+}
+
+.website-slider .website-slider-item {
+  position: relative;
+  min-height: 1px;
+  float: left;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  backface-visibility: hidden;
+  transition: opacity 400ms ease 0s;
+  opacity: 0;
+}
+
+.website-slider .website-slider-item.active {
+  max-height: unset;
+  user-select: auto;
+  opacity: 1;
+}
+
+.website-slider .website-slider-item-inner {
+  display: flex;
+  min-height: 100vh;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.site-footer {
+  position: relative;
+
+  .site-footer-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+	background-color: $dark;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .website-slider .website-slider-item-inner {
+    padding: 10rem 5rem;
+  }
+
+  .site-footer .social-nav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+  }
+
+  .site-footer .copyright {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+  }
+
+  .global-frame {
+    border: 0 solid #fff;
+
+    > * {
+	  position: absolute;
+	  z-index: 40;
+    }
+
+    .top {
+      border-top: inherit;
+      border-top-width: 5rem;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .bottom {
+      border-bottom: inherit;
+      border-bottom-width: 5rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .left {
+      border-left: inherit;
+      border-left-width: 5rem;
+      top: 0;
+      bottom: 0;
+      left: 0;
+    }
+
+    .right {
+      border-right: inherit;
+      border-right-width: 5rem;
+      top: 0;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+//
+// buttons.scss
+// Extended from Bootstrap
+//
+
+.btn.focus,
+.btn:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+// Sizes
+
+.btn-xs,
+.btn-group-xs > .btn {
+  padding: $btn-padding-y-xs $btn-padding-x-xs;
+  font-size: $btn-font-size-xs;
+  line-height: $btn-line-height-xs;
+  border-radius: $btn-border-radius-xs;
+}
+
+// Pill
+
+.btn-pill {
+  @include border-radius($rounded-pill);
+}
+
+// Icon
+
+.btn-icon {
+  position: relative;
+  line-height: 0;
+  font-size: $btn-icon-font-size;
+  width: $btn-icon-width;
+  height: $btn-icon-height;
+  padding: 0;
+
+  &-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &-bottom-minus {
+      top: 80%;
+    }
+  }
+}
+
+.btn-icon {
+  &.btn-xs {
+    font-size: $btn-icon-font-size-xs;
+    width: $btn-icon-width-xs;
+    height: $btn-icon-height-xs;
+  }
+
+  &.btn-sm {
+    font-size: $btn-icon-font-size-sm;
+    width: $btn-icon-width-sm;
+    height: $btn-icon-height-sm;
+  }
+
+  &.btn-lg {
+    font-size: $btn-icon-font-size-lg;
+    width: $btn-icon-width-lg;
+    height: $btn-icon-height-lg;
+  }
+}
+
+// Outline Styles
+
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    border-color: $value;
+  }
+}
+
+// Soft Styles
+
+.btn[class*=btn-soft-] {
+  border-color: transparent;
+}
+
+@each $color, $value in $theme-colors {
+  .btn-soft-#{$color} {
+    @if $color == "white" {
+      @include button-soft($value, $white, $value, $value);
+    } @else {
+      @include button-soft($value, darken($value, $btn-soft-hover-darken-percentage), $value, $value);
+    }
+  }
+}
+
+// Text Styles
+
+@each $color, $value in $theme-colors {
+  .btn-text-#{$color} {
+    @if $color == "white" {
+      @include button-text($value, $white);
+    } @else {
+      @include button-text($value, darken($value, $btn-text-hover-darken-percentage));
+    }
+  }
+}
