@@ -1,8 +1,7 @@
 ﻿.navbar-brand img{
 
-	height: 175px;
+	height: 150px;
 	/*width: auto;*/
-	overflow: hidden;
 }
 body{
 	overflow: hidden;
