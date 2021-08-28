@@ -2,6 +2,7 @@
 
 	height: 175px;
 	/*width: auto;*/
+	overflow: hidden;
 }
 body{
 	overflow: hidden;
